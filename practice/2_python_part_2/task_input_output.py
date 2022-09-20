@@ -18,6 +18,13 @@ Examples:
 
 
 def read_numbers(n: int) -> str:
-    ...
-
-
+    numbers = []
+    for word in range(n):
+        try:
+            numbers.append(float(input("user enters: ")))
+        except ValueError:
+            pass
+    if len(numbers):
+        return "Avg: {:.2f}".format(sum(numbers)/len(numbers))
+    else:
+        return "No numbers entered"

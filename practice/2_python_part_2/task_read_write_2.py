@@ -22,3 +22,28 @@ def generate_words(n=20):
         words.append(word)
 
     return words
+
+# generate_words()
+print("Running generate_words")
+lst = generate_words()
+print(lst)
+
+# file1.txt
+print("Generating file1.txt")
+f1 = open('file1.txt', 'w', encoding="utf-8")
+for word in lst:
+    print(word, file = f1, end = '\n')
+f1.close()
+
+# file2.txt
+print("Generating file2.txt")
+
+lst.reverse() # reversing list
+
+f2 = open('file2.txt', 'w', encoding="cp1252")
+for word in lst:
+    print(word, file = f2, end = ',')
+if f2.tell():
+    f2.seek(f2.tell() - 1, 0) # moving cursor 1byte left in f2
+    f2.truncate() # deleting the last comma symbol
+f2.close()
